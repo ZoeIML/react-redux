@@ -8,6 +8,10 @@ const words = (state = [], action) => {
           word: action.word
         }
       ]
+    case 'DEL_WORD':
+      return state.filter((word) => {
+        return word.id !== action.id
+      })
 
     default:
       return state
