@@ -17,6 +17,7 @@ const AddWord = (props) => (
       // dispatch directly on props
       submitWord(e, props.dispatch)
     }}
+
   />
 )
 
