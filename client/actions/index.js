@@ -23,3 +23,10 @@ export const deleteWord = (id) => {
     id
   }
 }
+
+export const deleteImage = (id) => {
+  return {
+    type: 'DEL_IMG',
+    id
+  }
+}

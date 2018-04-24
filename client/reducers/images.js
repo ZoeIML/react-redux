@@ -9,6 +9,11 @@ const images = (state = [], action) => {
         }
       ]
 
+    case 'DEL_IMG':
+      return state.filter((image) => {
+        return image.id !== action.id
+      })
+
     default:
       return state
   }
