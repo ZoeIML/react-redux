@@ -2,23 +2,33 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {deleteWord} from '../actions'
 
-function delWord (e, dispatch) {
-  const id = Number(e.currentTarget.id)
-  dispatch(deleteWord(id))
-}
+class Word extends React.Component {
+  constructor (props) {
+    super(props)
+    this.delWord = this.delWord.bind(this)
+  }
 
-const Word = (props) => (
-  <div>
-    <div>{props.word}</div>
-    <button
-      className="delete-word"
-      name={`${props.word}`}
-      onClick={e => {
-        delWord(e, props.dispatch)
-      }}>
-    Delete
-    </button>
-  </div>
-)
+  delWord (e, dispatch) {
+    const id = Number(e.target.id)
+    dispatch(deleteWord(id))
+  }
+
+  render () {
+    return (
+      <div>
+        <div>{this.props.word}</div>
+        <button
+          id={this.props.id}
+          className="delete-word"
+          name={`${this.props.word}`}
+          onClick={e => {
+            this.delWord(e, this.props.dispatch)
+          }}>
+            Delete
+        </button>
+      </div>
+    )
+  }
+}
 
 export default connect()(Word)
